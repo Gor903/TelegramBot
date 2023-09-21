@@ -1,4 +1,8 @@
+from io import BytesIO
+
 import easyocr
+import cv2
+import numpy as np
 
 
 def read_text(photo, language: str) -> str:

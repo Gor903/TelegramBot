@@ -24,7 +24,8 @@ languages = {
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
     await bot.send_message(message.from_user.id, f'Hello!👋🏻\n'
-                                                 f'Send me a photo.👀')
+                                                 f'Send me a photo.👀\n'
+                                                 f"/language ➡️ to change text's language.")
     if db.get_language(message.from_user.id) is None:
         db.add_user(message.from_user.id)
 
