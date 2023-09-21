@@ -2,13 +2,13 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import ContentType
 from TextReader import read_text
 from dotenv import load_dotenv
-from DataBase import Database
+from DataBase import DataBase
 import os
 
 load_dotenv()
 bot = Bot(token=os.getenv("BOT_TOKEN"))
 dp = Dispatcher(bot)
-db = Database(
+db = DataBase(
     os.getenv('HOST'),
     os.getenv('PORT'),
     os.getenv('DATABASE'),

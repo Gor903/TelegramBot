@@ -14,7 +14,7 @@ def decorator(func: Callable):
     return wrapper
 
 
-class Database:
+class DataBase:
     def __init__(self, host, port, database, user, password):
         self._connect = psycopg2.connect(
             host=host,
