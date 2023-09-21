@@ -18,6 +18,9 @@ db = DataBase(
 languages = {
     'English': 'en',
     'Russian': 'ru',
+    'Spanish': 'es',
+    'German': 'de',
+    'Latin': 'la',
 }
 
 
@@ -33,10 +36,8 @@ async def start(message: types.Message):
 @dp.message_handler(commands=['language'])
 async def language(message: types.Message):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True, selective=True)
-    keyboard.add(
-        types.KeyboardButton('English'),
-        types.KeyboardButton('Russian'),
-    )
+    for key in languages.keys():
+        keyboard.add(types.KeyboardButton(key))
     await message.answer('Choose language.🌎', reply_markup=keyboard)
 
 
@@ -53,7 +54,7 @@ async def photo_handler(message: types.Message):
     photo = await message.bot.download_file_by_id(file_id=message.photo[-1].file_id)
     text = read_text(photo, db.get_language(message.from_user.id))
     await bot_answer.delete()
-    await message.answer(text)
+    await message.answer(text == '' and 'No text found.' or text)
 
 
 if __name__ == "__main__":

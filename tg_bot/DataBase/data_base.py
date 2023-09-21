@@ -31,7 +31,6 @@ class DataBase:
         with self._connect:
             self._cursor.execute(f"INSERT INTO users(id, language) VALUES({user_id}, '{language}')")
         self._connect.commit()
-        print('success')
 
     @decorator
     def get_language(self, user_id: int):
