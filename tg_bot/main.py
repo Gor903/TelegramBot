@@ -9,9 +9,9 @@ load_dotenv()
 bot = Bot(token=os.getenv("BOT_TOKEN"))
 dp = Dispatcher(bot)
 db = DataBase(
-    os.getenv('HOST'),
-    os.getenv('PORT'),
-    os.getenv('DATABASE'),
+    os.getenv('DB_HOST'),
+    os.getenv('DB_PORT'),
+    os.getenv('DB_NAME'),
     os.getenv('DB_USER'),
     os.getenv('DB_PASSWORD'),
 )
